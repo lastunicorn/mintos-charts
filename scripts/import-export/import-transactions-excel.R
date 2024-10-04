@@ -6,8 +6,8 @@ library(hms)
 # Import transactions
 
 mintos <- read_and_merge_excels(c(
-  "data-raw/2023 - account statement.xlsx",
-  "data-raw/2024 - account-statement.xlsx"
+  "data-raw/account-statement - 2023.xlsx",
+  "data-raw/account-statement - 2024.xlsx"
 )) |> 
   janitor::clean_names() |> 
   mutate(

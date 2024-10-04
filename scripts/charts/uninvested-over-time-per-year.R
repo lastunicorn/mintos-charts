@@ -10,7 +10,7 @@ mintos |>
     year = year(date)
   ) |> 
   ggplot(aes(x = date_without_year, y = balance)) +
-  geom_line() +
+  geom_step() +
   facet_wrap(~ year, ncol = 1) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
   labs(
