@@ -42,3 +42,10 @@ t <- mintos |>
   summarize(total = sum(turnover)) |> 
   summarize(total = sum(total))
 
+
+# ------------------------------------------------------------------------------
+# Transaction count by type
+
+mintos |> 
+  group_by(payment_type) |> 
+  summarize(count = n())
