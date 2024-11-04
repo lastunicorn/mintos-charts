@@ -25,4 +25,4 @@ mintos |>
   )
 
 # Save
-ggsave("charts/uninvested-amount-ever.png", width=30, height=20, units="cm", dpi=300)
+save_plot("uninvested-amount-ever.png")

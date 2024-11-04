@@ -27,4 +27,4 @@ mintos |>
   )
 
 # Save
-ggsave("charts/uninvested-amount-per-year.png", width=30, height=20, units="cm", dpi=300)
+save_plot("uninvested-amount-per-year.png")

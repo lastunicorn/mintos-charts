@@ -1,14 +1,12 @@
 library(readxl)
-library(tidyverse)
 library(hms)
 
 # ------------------------------------------------------------------------------
 # Import transactions
 
-mintos <- read_and_merge_excels(c(
-  "data-raw/account-statement - 2023.xlsx",
-  "data-raw/account-statement - 2024.xlsx"
-)) |> 
+mintos <- read_and_merge_excels(
+  file.path(config.import_dir, list.files(config.import_dir, pattern = "account-statement.*\\.xlsx$"))
+) |> 
   janitor::clean_names() |> 
   mutate(
     date = as_datetime(date),
@@ -31,5 +29,19 @@ mintos <- read_and_merge_excels(c(
     "Tax withholding",
     "Delayed interest income on transit rebuy",
     "Late fees received",
-    "Interest received from pending payments"
+    "Interest received from pending payments",
+    "Mintos Core fee"
   ))
+
+
+# ------------------------------------------------------------------------------
+# Calculate important values
+
+mintos.first_date <- min(mintos$date)
+mintos.last_date <- max(mintos$date)
+
+mintos.first_month_as_date <- floor_date(mintos.first_date, "month")
+mintos.last_month_as_date <- floor_date(mintos.last_date, "month")
+
+mintos.first_year_as_date <- floor_date(mintos.first_date, "year")
+mintos.last_year_as_date <- floor_date(mintos.last_date, "year")

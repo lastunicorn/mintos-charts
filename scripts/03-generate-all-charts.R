@@ -1,9 +1,9 @@
 # ------------------------------------------------------------------------------
 # Interest
 
-source("scripts/charts/interest-by-day-ever.R")
 source("scripts/charts/interest-by-day-per-year.R")
 source("scripts/charts/interest-by-month-ever.R")
+source("scripts/charts/interest-by-month-per-year.R")
 source("scripts/charts/interest-by-year-ever.R")
 
 

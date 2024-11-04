@@ -58,12 +58,34 @@ convert_to_factor <- function(data, column, allowed_levels) {
   return(data)
 }
 
+
+# ------------------------------------------------------------------------------
+
 ensure_dir <- function(path) {
   ifelse(dir.exists(path), FALSE, dir.create(path))
 }
 
+
+# ------------------------------------------------------------------------------
+
 save_plot <- function(name, width = 30, height = 20) {
-  ensure_dir(config.charts_dir)
-  filePath <- file.path(config.charts_dir, name)
+  ensure_dir(config.output_dir)
+  filePath <- file.path(config.output_dir, name)
   ggsave(filePath, width = width, height = height, units="cm", dpi=300)
+}
+
+
+# ------------------------------------------------------------------------------
+
+generate_monthly_dates <- function(start_date, end_date) {
+  start_date <- as.Date(start_date)
+  end_date <- as.Date(end_date)
+  
+  dates <- seq(
+    from = floor_date(start_date, "month"), 
+    to = floor_date(end_date, "month"), 
+    by = "month"
+  )
+  
+  return(dates)
 }
