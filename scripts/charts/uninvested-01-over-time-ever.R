@@ -19,7 +19,7 @@ mintos |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Cash drag (uninvested amount) (ever)",
+    title = "Cash drag amount (ever)",
     x = "Date",
     y = "Amount (€)"
   )

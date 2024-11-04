@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Interest by day (per year)
+# Interest by day (ever)
 
 mintos |> 
   filter(payment_type %in% c(
@@ -9,30 +9,20 @@ mintos |>
     "Late fees received",
     "Interest received from pending payments")
   ) |>
-  add_row(
-    date = as.Date("2023-01-01"),
-    turnover = 0
-  ) |>
-  add_row(
-    date = as.Date("2024-12-31"),
-    turnover = 0
-  ) |>
   group_by(date) |> 
   arrange(date) |> 
   summarize(
     profit = sum(turnover)
   ) |> 
-  mutate(
-    year = year(date)
-  ) |> 
   ggplot(aes(x = date)) +
   geom_col(aes(y = profit)) +
-  facet_wrap(~ year, ncol = 1, scales = "free_x") +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
+  #geom_smooth(aes(y = profit), method = 'loess', formula = 'y ~ x') +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
+  guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Interest amount by day (per year)",
+    title = "Interest amount by day (ever)",
     x = "Date",
     y = "Amount (€)"
   )
 
-save_plot("interest-amount-by-day-per-year.png")
+save_plot("interest-amount-01-by-day-ever.png")

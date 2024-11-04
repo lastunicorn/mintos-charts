@@ -21,10 +21,10 @@ mintos |>
   facet_wrap(~ year, ncol = 1) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
   labs(
-    title = "Cash drag (uninvested amount) (per year)",
+    title = "Cash drag amount (per year)",
     x = "Date",
     y = "Amount (€)"
   )
 
 # Save
-save_plot("uninvested-amount-per-year.png")
+save_plot("uninvested-amount-02-per-year.png")

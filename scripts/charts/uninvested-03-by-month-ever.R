@@ -22,9 +22,9 @@ mintos |>
   guides(x = guide_axis(angle = 60)) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   labs(
-    title = "Cash drag average (uninvested amount) by month (ever)",
+    title = "Cash drag average amount by month (ever)",
     x = "Month",
     y = "Amount (€)"
   )
 
-save_plot("uninvested-amount-by-month-ever.png")
+save_plot("uninvested-amount-03-by-month-ever.png")
